@@ -38,7 +38,7 @@ export class SearchEffects {
   searchByTerm$ = this.actions$.pipe(
     ofType<SearchByTermAction>(SEARCH_BY_TERM),
     map(action => {
-      const query = action.payload
+      const query = encodeURIComponent(action.payload)
         .replace(/[(]/g, '%28')
         .replace(/[)]/g, '%29');
 
@@ -47,11 +47,9 @@ export class SearchEffects {
       );
       const librarySelected = !!libItem && libItem.value;
       if (librarySelected) {
-        this.router.navigateByUrl(
-          '/search-libraries;q=' + encodeURIComponent(query)
-        );
+        this.router.navigateByUrl('/search-libraries;q=' + query);
       } else {
-        this.router.navigateByUrl('/search;q=' + encodeURIComponent(query));
+        this.router.navigateByUrl('/search;q=' + query);
       }
     })
   );

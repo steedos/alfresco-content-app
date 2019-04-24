@@ -302,7 +302,7 @@ export class SearchInputComponent implements OnInit, OnDestroy {
       if (urlSegmentGroup) {
         const urlSegments: UrlSegment[] = urlSegmentGroup.segments;
         searchTerm = urlSegments[0].parameters['q']
-          ? decodeURIComponent(urlSegments[0].parameters['q'])
+          ? urlSegments[0].parameters['q']
           : '';
       }
     }

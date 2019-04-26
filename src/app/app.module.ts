@@ -75,6 +75,7 @@ import { AppLoginModule } from './components/login/login.module';
 import { AppHeaderModule } from './components/header/header.module';
 import { AppNodeVersionModule } from './components/node-version/node-version.module';
 import { environment } from '../environments/environment';
+import { AppAutomationService } from './services/automation.service';
 
 @NgModule({
   imports: [
@@ -130,7 +131,8 @@ import { environment } from '../environments/environment';
         name: 'app',
         source: 'assets'
       }
-    }
+    },
+    AppAutomationService
   ],
   entryComponents: [
     NodeVersionsDialogComponent,
@@ -139,4 +141,8 @@ import { environment } from '../environments/environment';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(automationService: AppAutomationService) {
+    automationService.setup();
+  }
+}

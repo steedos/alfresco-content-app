@@ -26,6 +26,7 @@
 import { Header, DataTable, Pagination, Toolbar, Breadcrumb, Sidenav } from '../components/components';
 import { SIDEBAR_LABELS } from './../configs';
 import { Page } from './page';
+import { navigateUrl } from '../application.util';
 
 export class BrowsingPage extends Page {
   header = new Header(this.app);
@@ -54,6 +55,10 @@ export class BrowsingPage extends Page {
     await this.dataTable.waitForHeader();
   }
 
+  async goToPersonalFiles() {
+    await navigateUrl('/personal-files');
+    await this.dataTable.waitForHeader();
+  }
 
   async clickFileLibraries() {
     await this.sidenav.clickLink(SIDEBAR_LABELS.FILE_LIBRARIES);

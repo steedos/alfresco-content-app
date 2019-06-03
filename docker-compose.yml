@@ -2,7 +2,7 @@ version: '2'
 
 services:
   alfresco:
-    image: steedos/alfresco-content-repository-community:latest
+    image: steedos/alfresco-content-repository-community:6.1.2-ga
     build: ./docker/alfresco/
     mem_limit: 1500m
     depends_on:
@@ -25,6 +25,9 @@ services:
         -Ddeployment.method=DOCKER_COMPOSE
         -Dcsrf.filter.enabled=false
         -Xms1g -Xmx1g
+        -Ds3.accesskey=alfresco_minio_key
+        -Ds3.secretkey=alfresco_minio_secret
+        -Ds3.bucketname=alfresco
         '
     networks:
       - internal
@@ -94,7 +97,7 @@ services:
       - 61613:61613 # STOMP
 
   content-app:
-    image: alfresco/alfresco-content-app:latest
+    image: steedos/alfresco-content-app:1.7.0
     build: .
     depends_on:
       - alfresco

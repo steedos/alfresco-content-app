@@ -2,7 +2,8 @@ version: '2'
 
 services:
   alfresco:
-    image: alfresco/alfresco-content-repository-community:6.1.2-ga
+    image: steedos/alfresco-content-repository-community:latest
+    build: ./docker/alfresco/
     mem_limit: 1500m
     depends_on:
       - postgres
@@ -107,6 +108,8 @@ services:
 
   minio:
     image: minio/minio
+    networks:
+      - internal
     ports:
       - 9000:9000
     volumes:

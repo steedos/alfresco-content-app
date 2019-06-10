@@ -2,7 +2,7 @@ version: '2'
 
 services:
   alfresco:
-    image: steedos/alfresco-content-repository-community:6.1.2-ga
+    image: steedos/alfresco-content-repository-community-s3:6.1.2-ga
     build: ./docker/alfresco/
     mem_limit: 1500m
     depends_on:
@@ -25,9 +25,13 @@ services:
         -Ddeployment.method=DOCKER_COMPOSE
         -Dcsrf.filter.enabled=false
         -Xms1g -Xmx1g
-        -Ds3.accesskey=alfresco_minio_key
-        -Ds3.secretkey=alfresco_minio_secret
-        -Ds3.bucketname=alfresco
+        -Daws.accessKey=alfresco_minio_key
+        -Daws.secretKey=alfresco_minio_secret
+        -Daws.s3.bucketName=alfresco
+        -Daws.s3.rootDirectory=/contentstore
+        -Daws.regionName=us-east-1
+        -Daws.s3.endpoint=http://minio:9000
+        -Dsystem.bootstrap.config_check.strict=false
         '
     networks:
       - internal
@@ -131,7 +135,7 @@ services:
     networks:
       - internal
     ports:
-      - 4000:80
+      - 4000:4000
 
 networks:
   internal:

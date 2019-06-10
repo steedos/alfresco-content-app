@@ -135,7 +135,7 @@ services:
     networks:
       - internal
     ports:
-      - 4000:4000
+      - 4000:80
 
 networks:
   internal:

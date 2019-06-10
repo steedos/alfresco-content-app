@@ -165,7 +165,7 @@
         "CUSTOM_ROW": {
           "MODIFIED": "已修改",
           "LOCATION": "位置",
-          "SIZE": "字号(&S)"
+          "SIZE": "大小"
         },
         "UNKNOWN_LOCATION": "未知",
         "NO_RESULTS": "您的搜索返回了 0 个结果",
@@ -229,7 +229,7 @@
       "COLUMNS": {
         "ID": "ID",
         "NAME": "名称",
-        "SIZE": "字号(&S)",
+        "SIZE": "大小",
         "MODIFIED_ON": "已修改",
         "MODIFIED_BY": "修改人",
         "VISIBILITY": "可见性",
@@ -409,7 +409,7 @@
     "VISIBILITY": {
       "PRIVATE": "私有",
       "PUBLIC": "公共",
-      "MODERATED": "适中"
+      "MODERATED": "需审核"
     },
     "HINTS": {
       "SITE_TITLE_EXISTS": "库名已在使用中"
@@ -442,7 +442,7 @@
       "FILENAME": "文件名",
       "TITLE": "标题",
       "MODIFIED_DATE": "修改日期",
-      "SIZE": "字号(&S)",
+      "SIZE": "大小",
       "TYPE": "类型",
       "MODIFIER": "修改者",
       "CREATE_DATE": "创建日期"
@@ -455,7 +455,7 @@
     },
     "CATEGORIES": {
       "MODIFIED_DATE": "修改日期",
-      "SIZE": "字号(&S)",
+      "SIZE": "大小",
       "CREATED_DATE": "创建日期"
     }
   },

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   alfresco:
-    image: steedos/alfresco-content-repository-community-s3:6.1.2-ga
+    image: steedos/alfresco-content-repository-community:6.1.2-ga
     build: ./docker/alfresco/
     mem_limit: 1500m
     depends_on:

@@ -77,7 +77,7 @@
                 }
             },
             "LIBRARIES": {
-                "TITLE": "My Libraries",
+                "TITLE": "All Libraries",
                 "DESCRIPTION": "Access File Libraries",
                 "SIDENAV_LINK": {
                     "LABEL": "File Libraries",
@@ -393,6 +393,7 @@
         }
     },
     "LIBRARY": {
+        "SHOWALL": "Show All Libraries",
         "DIALOG": {
             "CREATE_TITLE": "Create Library",
             "CREATE": "Create",

@@ -4,7 +4,7 @@ services:
   alfresco:
     image: steedos/alfresco-content-repository-community:6.1.2-ga
     build: ./docker/alfresco/
-    mem_limit: 1500m
+    mem_limit: 3500m
     depends_on:
       - postgres
     environment:
@@ -24,7 +24,7 @@ services:
         -Dmessaging.broker.url="failover:(nio://activemq:61616)?timeout=3000&jms.useCompression=true"
         -Ddeployment.method=DOCKER_COMPOSE
         -Dcsrf.filter.enabled=false
-        -Xms1g -Xmx1g
+        -Xms1g -Xmx2g
         -Daws.accessKey=alfresco_minio_key
         -Daws.secretKey=alfresco_minio_secret
         -Daws.s3.bucketName=alfresco
@@ -32,6 +32,18 @@ services:
         -Daws.regionName=us-east-1
         -Daws.s3.endpoint=http://minio:9000
         -Dsystem.bootstrap.config_check.strict=false
+        -Dcifs.enabled=false
+        -Dwebdav.enabled=true
+        -Dftp.enabled=false
+        -Dnfs.enabled=false
+        -Dimap.enabled=false
+        -Dreplication.enabled=false
+        -Dtransferservice.receiver.enabled=false
+        -DsyncService.mode=OFF
+        -Dsync.mode=OFF
+        -Dooo.enabled=false
+        -Djodconverter.enabled=true
+        -Dsystem.thumbnial.generate=false
         '
     networks:
       - internal
@@ -101,7 +113,7 @@ services:
       - 61613:61613 # STOMP
 
   content-app:
-    image: steedos/alfresco-content-app:1.7.0
+    image: steedos/alfresco-content-app:1.7.0.1
     build: .
     depends_on:
       - alfresco

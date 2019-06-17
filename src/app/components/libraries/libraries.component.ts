@@ -32,12 +32,15 @@ import { ContentManagementService } from '../../services/content-management.serv
 import { NavigateLibraryAction } from '../../store/actions';
 import { AppStore } from '../../store/states/app.state';
 import { PageComponent } from '../page.component';
+import { MatCheckboxChange } from '@angular/material';
 
 @Component({
   templateUrl: './libraries.component.html'
 })
 export class LibrariesComponent extends PageComponent implements OnInit {
   isSmallScreen = false;
+  currentFolderId = '-mysites-';
+  showAllLibraries = false;
 
   columns: any[] = [];
 
@@ -66,11 +69,18 @@ export class LibrariesComponent extends PageComponent implements OnInit {
     );
 
     this.columns = this.extensions.documentListPresets.libraries || [];
+    this.showAllLibraries = false;
+    this.currentFolderId = '-mysites-';
   }
 
   navigateTo(node: SiteEntry) {
     if (node && node.entry && node.entry.guid) {
       this.store.dispatch(new NavigateLibraryAction(node.entry.guid));
     }
+  }
+
+  onToggleShowAllLibraries(event: MatCheckboxChange) {
+    if (event.checked) this.currentFolderId = '-sites-';
+    else this.currentFolderId = '-mysites-';
   }
 }

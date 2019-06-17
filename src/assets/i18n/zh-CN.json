@@ -393,6 +393,7 @@
     }
   },
   "LIBRARY": {
+    "SHOWALL": "显示所有库",
     "DIALOG": {
       "CREATE_TITLE": "创建库",
       "CREATE": "创建",

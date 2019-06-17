@@ -2,7 +2,14 @@
   <app-page-layout-header>
     <adf-breadcrumb root="APP.BROWSE.LIBRARIES.MENU.MY_LIBRARIES.TITLE">
     </adf-breadcrumb>
-
+    <div class="">
+      <mat-slide-toggle
+        [ngModel]="showAllLibraries | async"
+        (change)="onToggleShowAllLibraries($event)"
+      >
+        {{ 'LIBRARY.SHOWALL' | translate }}
+      </mat-slide-toggle>
+    </div>
     <adf-toolbar class="inline">
       <ng-container *ngFor="let entry of actions; trackBy: trackByActionId">
         <aca-toolbar-action [actionRef]="entry"></aca-toolbar-action>
@@ -17,7 +24,7 @@
         acaDocumentList
         acaContextActions
         [display]="documentDisplayMode$ | async"
-        currentFolderId="-mysites-"
+        [currentFolderId]="currentFolderId"
         selectionMode="single"
         [navigate]="false"
         [sorting]="['title', 'asc']"
